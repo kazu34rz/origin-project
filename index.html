@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PROJECT ORIGIN - Development Log</title>
+  <meta name="description" content="BTC自動売買システム PROJECT ORIGIN の個人開発記録。">
+  <style>
+    :root{
+      --bg:#08111f;
+      --panel:#0f1b2d;
+      --panel2:#12243a;
+      --text:#eaf2ff;
+      --muted:#8fa6c2;
+      --line:#203551;
+      --accent:#7bdcff;
+      --accent2:#7af0b5;
+      --warn:#ffcf70;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(50,120,200,.18), transparent 34%),
+        linear-gradient(180deg,#07101c 0%,#091522 100%);
+      color:var(--text);
+      line-height:1.75;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(980px,calc(100% - 32px));margin:auto}
+    header{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(14px);
+      background:rgba(7,16,28,.78);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    nav{
+      min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px
+    }
+    .brand{font-weight:800;letter-spacing:.12em;font-size:.92rem}
+    .navlinks{display:flex;gap:18px;color:var(--muted);font-size:.9rem}
+    .hero{padding:92px 0 64px}
+    .eyebrow{
+      color:var(--accent);font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase
+    }
+    h1{
+      margin:12px 0 18px;font-size:clamp(2.6rem,8vw,5.4rem);
+      line-height:.98;letter-spacing:-.05em
+    }
+    .hero p{max-width:690px;color:#b9c9da;font-size:1.05rem}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+    .chip{
+      padding:8px 12px;border:1px solid var(--line);border-radius:999px;
+      color:#bcd0e6;background:rgba(255,255,255,.025);font-size:.82rem
+    }
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    .card{
+      background:linear-gradient(180deg,rgba(18,36,58,.92),rgba(13,27,45,.92));
+      border:1px solid var(--line);border-radius:22px;padding:24px;
+      box-shadow:0 18px 55px rgba(0,0,0,.18)
+    }
+    .card h2,.card h3{margin-top:0}
+    .label{color:var(--muted);font-size:.82rem}
+    .big{font-size:2rem;font-weight:800;margin:4px 0}
+    .good{color:var(--accent2)}
+    .note{color:var(--muted);font-size:.92rem}
+    section{padding:28px 0}
+    .section-title{margin-bottom:16px}
+    .section-title span{color:var(--accent);font-size:.78rem;letter-spacing:.15em;font-weight:800}
+    .section-title h2{margin:4px 0 0;font-size:1.65rem}
+    .timeline{display:grid;gap:14px}
+    .entry{
+      padding:20px;border-left:3px solid var(--accent);
+      background:rgba(255,255,255,.03);border-radius:0 16px 16px 0
+    }
+    .entry time{color:var(--muted);font-size:.8rem}
+    .entry h3{margin:6px 0 8px}
+    footer{
+      margin-top:44px;padding:34px 0 48px;color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.07);font-size:.85rem
+    }
+    .disclaimer{
+      margin-top:18px;padding:16px 18px;border:1px solid rgba(255,207,112,.25);
+      background:rgba(255,207,112,.05);border-radius:14px;color:#c9b98e;font-size:.84rem
+    }
+    @media(max-width:720px){
+      .navlinks{display:none}
+      .hero{padding:68px 0 46px}
+      .grid{grid-template-columns:1fr}
+      .card{padding:20px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#">PROJECT ORIGIN</a>
+        <div class="navlinks">
+          <a href="#about">ABOUT</a>
+          <a href="#status">STATUS</a>
+          <a href="#log">DEV LOG</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <div class="eyebrow">Personal BTC Trading System / Development Log</div>
+        <h1>PROJECT<br>ORIGIN</h1>
+        <p>
+          個人で開発しているBTC自動売買システム「ORIGIN」の開発記録。
+          相場分析、PaperTrade、戦略比較、Commander、LIVE取引まで、
+          少しずつ育っていく過程を残しています。
+        </p>
+        <div class="chips">
+          <span class="chip">BTC</span>
+          <span class="chip">Python</span>
+          <span class="chip">PaperTrade</span>
+          <span class="chip">Strategy Research</span>
+          <span class="chip">Commander</span>
+          <span class="chip">Live Trading</span>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-title">
+          <span>ABOUT</span>
+          <h2>ORIGINとは</h2>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>自分のトレードを、自分でシステムにする。</h3>
+            <p>
+              ORIGINは、BTC相場を分析しながら複数の戦略を比較し、
+              条件が整ったときに売買判断を行う個人開発の自動売買システムです。
+            </p>
+            <p class="note">
+              このサイトは販売ページではなく、設計・検証・失敗・改善を記録するための開発日記です。
+            </p>
+            <p class="note" style="margin-top:18px;">
+              現在は個人利用を目的として開発・検証しています。
+              長期運用で十分な安定性と結果が確認できた場合には、
+              いつか一般向けに公開することも考えています。
+            </p>
+          </article>
+
+          <article class="card" id="status">
+            <div class="label">CURRENT PHASE</div>
+            <div class="big good">LIVE TEST</div>
+            <div class="label">STATUS</div>
+            <p>実口座連携の安全確認と経過観察</p>
+            <div class="label">STYLE</div>
+            <p>長期観察・段階的改善</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="analytics">
+        <div class="section-title">
+          <span>ACCESS ANALYTICS</span>
+          <h2>閲覧状況</h2>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <div class="label">ANALYTICS</div>
+            <div class="big good">READY</div>
+            <p>
+              公開後はCloudflare Web Analyticsを接続して、
+              訪問数・ページビュー・参照元・利用端末などを確認できるようにします。
+            </p>
+            <p class="note">
+              現在は未公開の見本ページなので、実データの計測はまだ始まっていません。
+            </p>
+          </article>
+          <article class="card">
+            <div class="label">CHECK FROM</div>
+            <div class="big">Dashboard</div>
+            <p>
+              閲覧数は公開ページ上に見せず、管理者だけが解析画面で確認する想定です。
+            </p>
+            <p class="note">
+              サイト公開後に発行される専用トークンを入れるだけで計測を開始できます。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="log">
+        <div class="section-title">
+          <span>DEVELOPMENT LOG</span>
+          <h2>開発日記</h2>
+        </div>
+
+        <div class="timeline">
+          <article class="entry">
+            <time>2026.08.30</time>
+            <h3>LIVE画面の表示を整理</h3>
+            <p>
+              実口座のポジション、約定価格、損益、照合状態などをスマホから確認しやすい形へ。
+              売買ロジックには触れず、表示だけを調整。
+            </p>
+          </article>
+
+          <article class="entry">
+            <time>2026.08.29</time>
+            <h3>Commanderから売買判断へ</h3>
+            <p>
+              LONG / SHORTを個別に評価し、現在採用中のstrategy/profileに応じて
+              エントリー適格判定を行う構造を調整。PaperTradeで挙動を観察。
+            </p>
+          </article>
+
+          <article class="entry">
+            <time>2026.08</time>
+            <h3>研究所とPaperTradeを接続</h3>
+            <p>
+              複数strategyを並行評価し、成績の良い方式をPaperTradeへ反映する仕組みを実装。
+              「考えるだけ」から「比較して選ぶ」システムへ。
+            </p>
+          </article>
+
+          <article class="entry">
+            <time>START</time>
+            <h3>ORIGIN開発開始</h3>
+            <p>
+              bitFlyerの価格取得とMACD分析からスタート。
+              小さなプログラムを少しずつ積み重ね、現在の形へ。
+            </p>
+          </article>
+        </div>
+
+        <div class="disclaimer">
+          ※ 本サイトは個人開発の記録です。投資助言、利益保証、売買推奨を目的としたものではありません。
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      PROJECT ORIGIN / Development Log<br>
+      Built as a personal development journal.
+    </div>
+  </footer>
+
+  <!--
+    Cloudflare Web Analytics:
+    サイト公開後、Cloudflare Web Analyticsでサイトを追加し、
+    発行された専用JSスニペットをこの位置（</body>直前）へ貼り付ける。
+    現在は未公開のため、計測コードは意図的に有効化していません。
+  -->
+</body>
+</html>
