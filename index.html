@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PROJECT ORIGIN - Development Log</title>
   <meta name="description" content="BTC自動売買システム PROJECT ORIGIN の個人開発記録。">
+
   <style>
     :root{
       --bg:#08111f;
@@ -16,9 +17,13 @@
       --accent:#7bdcff;
       --accent2:#7af0b5;
       --warn:#ffcf70;
+      --danger:#ff8c9a;
     }
+
     *{box-sizing:border-box}
+
     html{scroll-behavior:smooth}
+
     body{
       margin:0;
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
@@ -28,79 +33,347 @@
       color:var(--text);
       line-height:1.75;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(980px,calc(100% - 32px));margin:auto}
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .wrap{
+      width:min(980px,calc(100% - 32px));
+      margin:auto;
+    }
+
     header{
-      position:sticky;top:0;z-index:10;
+      position:sticky;
+      top:0;
+      z-index:10;
       backdrop-filter:blur(14px);
       background:rgba(7,16,28,.78);
       border-bottom:1px solid rgba(255,255,255,.06);
     }
+
     nav{
-      min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:20px
+      min-height:62px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
     }
-    .brand{font-weight:800;letter-spacing:.12em;font-size:.92rem}
-    .navlinks{display:flex;gap:18px;color:var(--muted);font-size:.9rem}
-    .hero{padding:92px 0 64px}
+
+    .brand{
+      font-weight:800;
+      letter-spacing:.12em;
+      font-size:.92rem;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:18px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .hero{
+      padding:92px 0 64px;
+    }
+
     .eyebrow{
-      color:var(--accent);font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase
+      color:var(--accent);
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
     }
+
     h1{
-      margin:12px 0 18px;font-size:clamp(2.6rem,8vw,5.4rem);
-      line-height:.98;letter-spacing:-.05em
+      margin:12px 0 18px;
+      font-size:clamp(2.6rem,8vw,5.4rem);
+      line-height:.98;
+      letter-spacing:-.05em;
     }
-    .hero p{max-width:690px;color:#b9c9da;font-size:1.05rem}
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+
+    .hero p{
+      max-width:690px;
+      color:#b9c9da;
+      font-size:1.05rem;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:28px;
+    }
+
     .chip{
-      padding:8px 12px;border:1px solid var(--line);border-radius:999px;
-      color:#bcd0e6;background:rgba(255,255,255,.025);font-size:.82rem
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color:#bcd0e6;
+      background:rgba(255,255,255,.025);
+      font-size:.82rem;
     }
-    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+
+    .grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:18px;
+    }
+
     .card{
       background:linear-gradient(180deg,rgba(18,36,58,.92),rgba(13,27,45,.92));
-      border:1px solid var(--line);border-radius:22px;padding:24px;
-      box-shadow:0 18px 55px rgba(0,0,0,.18)
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:24px;
+      box-shadow:0 18px 55px rgba(0,0,0,.18);
     }
-    .card h2,.card h3{margin-top:0}
-    .label{color:var(--muted);font-size:.82rem}
-    .big{font-size:2rem;font-weight:800;margin:4px 0}
-    .good{color:var(--accent2)}
-    .note{color:var(--muted);font-size:.92rem}
-    section{padding:28px 0}
-    .section-title{margin-bottom:16px}
-    .section-title span{color:var(--accent);font-size:.78rem;letter-spacing:.15em;font-weight:800}
-    .section-title h2{margin:4px 0 0;font-size:1.65rem}
-    .timeline{display:grid;gap:14px}
+
+    .card h2,
+    .card h3{
+      margin-top:0;
+    }
+
+    .label{
+      color:var(--muted);
+      font-size:.82rem;
+    }
+
+    .big{
+      font-size:2rem;
+      font-weight:800;
+      margin:4px 0;
+    }
+
+    .good{
+      color:var(--accent2);
+    }
+
+    .note{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    section{
+      padding:28px 0;
+    }
+
+    .section-title{
+      margin-bottom:16px;
+    }
+
+    .section-title span{
+      color:var(--accent);
+      font-size:.78rem;
+      letter-spacing:.15em;
+      font-weight:800;
+    }
+
+    .section-title h2{
+      margin:4px 0 0;
+      font-size:1.65rem;
+    }
+
+    .timeline{
+      display:grid;
+      gap:14px;
+    }
+
     .entry{
-      padding:20px;border-left:3px solid var(--accent);
-      background:rgba(255,255,255,.03);border-radius:0 16px 16px 0
+      padding:20px;
+      border-left:3px solid var(--accent);
+      background:rgba(255,255,255,.03);
+      border-radius:0 16px 16px 0;
     }
-    .entry time{color:var(--muted);font-size:.8rem}
-    .entry h3{margin:6px 0 8px}
+
+    .entry time{
+      color:var(--muted);
+      font-size:.8rem;
+    }
+
+    .entry h3{
+      margin:6px 0 8px;
+    }
+
     footer{
-      margin-top:44px;padding:34px 0 48px;color:var(--muted);
-      border-top:1px solid rgba(255,255,255,.07);font-size:.85rem
+      margin-top:44px;
+      padding:34px 0 48px;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,.07);
+      font-size:.85rem;
     }
+
     .disclaimer{
-      margin-top:18px;padding:16px 18px;border:1px solid rgba(255,207,112,.25);
-      background:rgba(255,207,112,.05);border-radius:14px;color:#c9b98e;font-size:.84rem
+      margin-top:18px;
+      padding:16px 18px;
+      border:1px solid rgba(255,207,112,.25);
+      background:rgba(255,207,112,.05);
+      border-radius:14px;
+      color:#c9b98e;
+      font-size:.84rem;
     }
+
+    /* =========================
+       ORIGIN DEMO TRADING
+       ========================= */
+
+    .demo-card{
+      overflow:hidden;
+    }
+
+    .demo-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:20px;
+    }
+
+    .demo-status{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      color:var(--muted);
+      font-size:.84rem;
+    }
+
+    .demo-dot{
+      width:9px;
+      height:9px;
+      border-radius:50%;
+      background:var(--accent2);
+      box-shadow:0 0 12px rgba(122,240,181,.65);
+      flex:0 0 auto;
+    }
+
+    .demo-dot.offline{
+      background:var(--danger);
+      box-shadow:0 0 12px rgba(255,140,154,.55);
+    }
+
+    .demo-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .demo-box{
+      min-width:0;
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(255,255,255,.025);
+    }
+
+    .demo-box .label{
+      margin-bottom:5px;
+    }
+
+    .demo-value{
+      font-size:1.25rem;
+      font-weight:800;
+      line-height:1.35;
+      word-break:break-word;
+    }
+
+    .demo-value.long{
+      color:var(--accent2);
+    }
+
+    .demo-value.short{
+      color:var(--danger);
+    }
+
+    .demo-value.plus{
+      color:var(--accent2);
+    }
+
+    .demo-value.minus{
+      color:var(--danger);
+    }
+
+    .demo-main{
+      display:grid;
+      grid-template-columns:1.4fr .8fr .8fr;
+      gap:12px;
+      margin-bottom:12px;
+    }
+
+    .demo-main .demo-box:first-child .demo-value{
+      font-size:1.7rem;
+    }
+
+    .demo-footer{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:.78rem;
+    }
+
+    .demo-footer div + div{
+      margin-top:4px;
+    }
+
+    .demo-live-badge{
+      display:inline-flex;
+      align-items:center;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid rgba(122,240,181,.3);
+      color:var(--accent2);
+      background:rgba(122,240,181,.06);
+      font-size:.74rem;
+      font-weight:800;
+      letter-spacing:.08em;
+    }
+
     @media(max-width:720px){
-      .navlinks{display:none}
-      .hero{padding:68px 0 46px}
-      .grid{grid-template-columns:1fr}
-      .card{padding:20px}
+      .navlinks{
+        display:none;
+      }
+
+      .hero{
+        padding:68px 0 46px;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .card{
+        padding:20px;
+      }
+
+      .demo-main{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .demo-main .demo-box:first-child{
+        grid-column:1 / -1;
+      }
+
+      .demo-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .demo-value{
+        font-size:1.08rem;
+      }
     }
   </style>
 </head>
+
 <body>
+
   <header>
     <div class="wrap">
       <nav>
         <a class="brand" href="#">PROJECT ORIGIN</a>
+
         <div class="navlinks">
           <a href="#about">ABOUT</a>
           <a href="#status">STATUS</a>
+          <a href="#demo">DEMO</a>
           <a href="#log">DEV LOG</a>
         </div>
       </nav>
@@ -109,16 +382,30 @@
 
   <main>
     <div class="wrap">
+
       <section class="hero">
         <div class="eyebrow">Personal BTC Trading System / Development Log</div>
+
         <h1>PROJECT<br>ORIGIN</h1>
-        <img src="CA845100-BFF2-4024-BCC4-3A9D76934C77.png" alt="ORIGIN mascot" style="width:100%;max-width:420px;height:auto;display:block;margin:18px auto 24px;">
-        <p><strong>プログラミング未経験から、ChatGPTにコードを書いてもらって1ヶ月で作りました。</strong></p>
+
+        <img
+          src="CA845100-BFF2-4024-BCC4-3A9D76934C77.png"
+          alt="ORIGIN mascot"
+          style="width:100%;max-width:420px;height:auto;display:block;margin:18px auto 24px;"
+        >
+
+        <p>
+          <strong>
+            プログラミング未経験から、ChatGPTにコードを書いてもらって1ヶ月で作りました。
+          </strong>
+        </p>
+
         <p>
           個人で開発しているBTC自動売買システム「ORIGIN」の開発記録。
           相場分析、PaperTrade、戦略比較、Commander、LIVE取引まで、
           少しずつ育っていく過程を残しています。
         </p>
+
         <div class="chips">
           <span class="chip">BTC</span>
           <span class="chip">Python</span>
@@ -129,21 +416,28 @@
         </div>
       </section>
 
+
       <section id="about">
+
         <div class="section-title">
           <span>ABOUT</span>
           <h2>ORIGINとは</h2>
         </div>
+
         <div class="grid">
+
           <article class="card">
             <h3>自分のトレードを、自分でシステムにする。</h3>
+
             <p>
               ORIGINは、BTC相場を分析しながら複数の戦略を比較し、
               条件が整ったときに売買判断を行う個人開発の自動売買システムです。
             </p>
+
             <p class="note">
               このサイトは販売ページではなく、設計・検証・失敗・改善を記録するための開発日記です。
             </p>
+
             <p class="note" style="margin-top:18px;">
               現在は個人利用を目的として開発・検証しています。
               長期運用で十分な安定性と結果が確認できた場合には、
@@ -151,133 +445,671 @@
             </p>
           </article>
 
+
           <article class="card" id="status">
+
             <div class="label">CURRENT PHASE</div>
             <div class="big good">LIVE TEST</div>
+
             <div class="label">STATUS</div>
             <p>実口座連携の安全確認と経過観察</p>
+
             <div class="label">STYLE</div>
             <p>長期観察・段階的改善</p>
+
           </article>
+
         </div>
       </section>
 
+
+      <!-- =========================
+           REALTIME DEMO
+           ========================= -->
+
+      <section id="demo">
+
+        <div class="section-title">
+          <span>REALTIME PAPER TRADE</span>
+          <h2>ORIGIN DEMO TRADING</h2>
+        </div>
+
+        <article class="card demo-card">
+
+          <div class="demo-head">
+
+            <div class="demo-status">
+              <span class="demo-dot" id="demo-dot"></span>
+              <span id="demo-connection">ORIGINと接続中...</span>
+            </div>
+
+            <div class="demo-live-badge">
+              5 SEC AUTO UPDATE
+            </div>
+
+          </div>
+
+
+          <div class="demo-main">
+
+            <div class="demo-box">
+              <div class="label">BTC PRICE</div>
+              <div class="demo-value" id="demo-btc">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">COMMANDER</div>
+              <div class="demo-value" id="demo-commander">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">STRATEGY</div>
+              <div class="demo-value" id="demo-strategy">---</div>
+            </div>
+
+          </div>
+
+
+          <div class="demo-grid">
+
+            <div class="demo-box">
+              <div class="label">LONG</div>
+              <div class="demo-value long" id="demo-long">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">SHORT</div>
+              <div class="demo-value short" id="demo-short">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">ACTION</div>
+              <div class="demo-value" id="demo-action">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">PAPER POSITION</div>
+              <div class="demo-value" id="demo-position">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">ENTRY PRICE</div>
+              <div class="demo-value" id="demo-entry">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">CURRENT PRICE</div>
+              <div class="demo-value" id="demo-current">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">含み損益</div>
+              <div class="demo-value" id="demo-pnl">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">含み損益率</div>
+              <div class="demo-value" id="demo-pnl-pct">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">DEMO ASSET</div>
+              <div class="demo-value" id="demo-asset">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">INITIAL ASSET</div>
+              <div class="demo-value" id="demo-initial">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">累計損益</div>
+              <div class="demo-value" id="demo-total-pnl">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">TOTAL RETURN</div>
+              <div class="demo-value" id="demo-return">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">TRADES</div>
+              <div class="demo-value" id="demo-trades">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">WIN RATE</div>
+              <div class="demo-value" id="demo-winrate">---</div>
+            </div>
+
+            <div class="demo-box">
+              <div class="label">POSITION START</div>
+              <div class="demo-value" id="demo-position-start">---</div>
+            </div>
+
+          </div>
+
+
+          <div class="demo-footer">
+            <div id="demo-updated">最終更新: ---</div>
+            <div>
+              ※ PaperTradeのデモ結果です。LIVE実口座のポジション・残高・注文情報は公開していません。
+            </div>
+          </div>
+
+        </article>
+      </section>
+
+
       <section id="analytics">
+
         <div class="section-title">
           <span>ACCESS ANALYTICS</span>
           <h2>閲覧状況</h2>
         </div>
+
         <div class="grid">
+
           <article class="card">
+
             <div class="label">ANALYTICS</div>
             <div class="big good">VISITORS</div>
+
             <p>
-           <img src="https://hits.sh/kazu34rz.github.io/origin-project.svg?style=for-the-badge&label=TOTAL%20VIEWS"
-       alt="累計アクセス数">
-　　　　　　　　</p>
-        
+              <img
+                src="https://hits.sh/kazu34rz.github.io/origin-project.svg?style=for-the-badge&label=TOTAL%20VIEWS"
+                alt="累計アクセス数"
+              >
+            </p>
+
+          </article>
+
         </div>
       </section>
 
+
       <section id="log">
+
         <div class="section-title">
           <span>DEVELOPMENT LOG</span>
           <h2>開発日記</h2>
         </div>
 
-      <div class="timeline">
-        
-        <article class="entry">
-　　　　　  <time>2026.09.05</time>
-　　　　　  <h3>ORIGINに全振りしました。</h3>
-　　　　　  <p>とりあえず動作は問題なさそうなので、自分のポジションをORIGINに全振りしました。</p>
-         <img src="IMG_1382.png" alt="ORIGIN" style="width:30%; height:auto;">
-　　　　　　<img src="IMG_1383.png" alt="ORIGIN" style="width:30%; height:auto;">
-　　　　　　</article>
-          
+
+        <div class="timeline">
+
+
           <article class="entry">
-           <time>2026.08.31</time>
-           <h3>お試しで実戦投入しました。</h3>
-          <img src="IMG_1235.png" alt="ORIGIN LIVE" style="width:100%; height:auto; border-radius:16px; margin-top:18px;">
+
+            <time>2026.09.05</time>
+
+            <h3>ORIGINに全振りしました。</h3>
+
+            <p>
+              とりあえず動作は問題なさそうなので、自分のポジションをORIGINに全振りしました。
+            </p>
+
+            <img
+              src="IMG_1382.png"
+              alt="ORIGIN"
+              style="width:30%;height:auto;"
+            >
+
+            <img
+              src="IMG_1383.png"
+              alt="ORIGIN"
+              style="width:30%;height:auto;"
+            >
+
+          </article>
+
+
+          <article class="entry">
+
+            <time>2026.08.31</time>
+
+            <h3>お試しで実戦投入しました。</h3>
+
+            <img
+              src="IMG_1235.png"
+              alt="ORIGIN LIVE"
+              style="width:100%;height:auto;border-radius:16px;margin-top:18px;"
+            >
 
             <p>ORIGINの残りの画面です。</p>
-　　　　　　　　<img src="IMG_1290.png" alt="ORIGINの画面" style="width:70%; max-width:360px; display:block; margin:12px auto;">
-　　　　　　　　<img src="IMG_1291.png" alt="ORIGINの画面" style="width:70%; max-width:360px; display:block; margin:12px auto;">　
-            </article>
+
+            <img
+              src="IMG_1290.png"
+              alt="ORIGINの画面"
+              style="width:70%;max-width:360px;display:block;margin:12px auto;"
+            >
+
+            <img
+              src="IMG_1291.png"
+              alt="ORIGINの画面"
+              style="width:70%;max-width:360px;display:block;margin:12px auto;"
+            >
+
+          </article>
+
+
           <article class="entry">
+
             <time>2026.08.30</time>
+
             <h3>LIVE画面の表示を整理</h3>
+
             <p>
               実口座のポジション、約定価格、損益、照合状態などをスマホから確認しやすい形へ。
               売買ロジックには触れず、表示だけを調整。
             </p>
+
           </article>
 
+
           <article class="entry">
+
             <time>2026.08.29</time>
+
             <h3>Commanderから売買判断へ</h3>
+
             <p>
               LONG / SHORTを個別に評価し、現在採用中のstrategy/profileに応じて
               エントリー適格判定を行う構造を調整。PaperTradeで挙動を観察。
             </p>
+
           </article>
 
+
           <article class="entry">
+
             <time>2026.08</time>
+
             <h3>研究所とPaperTradeを接続</h3>
+
             <p>
               複数strategyを並行評価し、成績の良い方式をPaperTradeへ反映する仕組みを実装。
               「考えるだけ」から「比較して選ぶ」システムへ。
             </p>
+
           </article>
 
+
           <article class="entry">
+
             <time>START</time>
+
             <h3>ORIGIN開発開始</h3>
+
             <p>
               bitFlyerの価格取得とMACD分析からスタート。
               小さなプログラムを少しずつ積み重ね、現在の形へ。
             </p>
+
           </article>
+
         </div>
+
 
         <div class="disclaimer">
           ※ 本サイトは個人開発の記録です。投資助言、利益保証、売買推奨を目的としたものではありません。
         </div>
+
       </section>
+
     </div>
   </main>
-  <section style="text-align:center; margin:40px 0;">
-  <h2>ORIGINをスマホで見る</h2>
-  <p>QRコードからこのページにアクセスできます。</p>
-  <img src="D124BF06-18E1-400E-A80D-F1C4BCA6F568.png" alt="PROJECT ORIGIN QRコード" style="width:140px; max-width:60%; border-radius:12px;">
-</section>
-  <section style="margin:40px auto; max-width:760px; padding:0 20px;">
-  <h2>ORIGINへのコメント</h2>
-  <p>開発についての感想など、お気軽にどうぞ。</p>
-    <script src="https://giscus.app/client.js"
-        data-repo="kazu34rz/origin-project"
-        data-repo-id="R_kgDOUIpcVg"
-        data-category="Announcements"
-        data-category-id="DIC_kwDOUIpcVs4DEpbd"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="dark_dimmed"
-        data-lang="ja"
-        crossorigin="anonymous"
-        async>
-</script>
-    </section>
+
+
+  <section style="text-align:center;margin:40px 0;">
+
+    <h2>ORIGINをスマホで見る</h2>
+
+    <p>QRコードからこのページにアクセスできます。</p>
+
+    <img
+      src="D124BF06-18E1-400E-A80D-F1C4BCA6F568.png"
+      alt="PROJECT ORIGIN QRコード"
+      style="width:140px;max-width:60%;border-radius:12px;"
+    >
+
+  </section>
+
+
+  <section style="margin:40px auto;max-width:760px;padding:0 20px;">
+
+    <h2>ORIGINへのコメント</h2>
+
+    <p>開発についての感想など、お気軽にどうぞ。</p>
+
+    <script
+      src="https://giscus.app/client.js"
+      data-repo="kazu34rz/origin-project"
+      data-repo-id="R_kgDOUIpcVg"
+      data-category="Announcements"
+      data-category-id="DIC_kwDOUIpcVs4DEpbd"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="bottom"
+      data-theme="dark_dimmed"
+      data-lang="ja"
+      crossorigin="anonymous"
+      async>
+    </script>
+
+  </section>
+
 
   <footer>
+
     <div class="wrap">
+
       PROJECT ORIGIN / Development Log<br>
       Built as a personal development journal.
+
     </div>
+
   </footer>
+
+
+  <!-- =========================
+       ORIGIN DEMO API
+       ========================= -->
+
+  <script>
+
+    const ORIGIN_DEMO_API =
+      "https://os3-387-26833.vs.sakura.ne.jp/api/public/demo";
+
+
+    const yenFormatter =
+      new Intl.NumberFormat("ja-JP");
+
+
+    function yen(value){
+
+      const n = Number(value);
+
+      if(!Number.isFinite(n)){
+        return "---";
+      }
+
+      return "¥" + yenFormatter.format(Math.round(n));
+
+    }
+
+
+    function signedYen(value){
+
+      const n = Number(value);
+
+      if(!Number.isFinite(n)){
+        return "---";
+      }
+
+      if(n > 0){
+        return "+¥" + yenFormatter.format(Math.round(n));
+      }
+
+      if(n < 0){
+        return "-¥" + yenFormatter.format(Math.abs(Math.round(n)));
+      }
+
+      return "¥0";
+
+    }
+
+
+    function percent(value){
+
+      const n = Number(value);
+
+      if(!Number.isFinite(n)){
+        return "---";
+      }
+
+      const sign = n > 0 ? "+" : "";
+
+      return sign + n.toFixed(2) + "%";
+
+    }
+
+
+    function setProfitClass(element,value){
+
+      element.classList.remove("plus","minus");
+
+      const n = Number(value);
+
+      if(!Number.isFinite(n)){
+        return;
+      }
+
+      if(n > 0){
+        element.classList.add("plus");
+      }
+
+      if(n < 0){
+        element.classList.add("minus");
+      }
+
+    }
+
+
+    function setPositionClass(element,value){
+
+      element.classList.remove("long","short");
+
+      if(value === "LONG"){
+        element.classList.add("long");
+      }
+
+      if(value === "SHORT"){
+        element.classList.add("short");
+      }
+
+    }
+
+
+    async function refreshOriginDemo(){
+
+      const dot =
+        document.getElementById("demo-dot");
+
+      const connection =
+        document.getElementById("demo-connection");
+
+      try{
+
+        const response =
+          await fetch(
+            ORIGIN_DEMO_API,
+            {
+              cache:"no-store"
+            }
+          );
+
+
+        if(!response.ok){
+
+          throw new Error(
+            "HTTP " + response.status
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        const paper =
+          data.paper_trade || {};
+
+
+        document.getElementById("demo-btc").textContent =
+          yen(data.btc_price);
+
+
+        document.getElementById("demo-commander").textContent =
+          data.commander ?? "---";
+
+
+        document.getElementById("demo-long").textContent =
+          `${data.long_score ?? "---"} / ${data.long_rating ?? "-"}`;
+
+
+        document.getElementById("demo-short").textContent =
+          `${data.short_score ?? "---"} / ${data.short_rating ?? "-"}`;
+
+
+        document.getElementById("demo-action").textContent =
+          data.action ?? "---";
+
+
+        document.getElementById("demo-strategy").textContent =
+          data.strategy ?? "---";
+
+
+        const positionElement =
+          document.getElementById("demo-position");
+
+
+        positionElement.textContent =
+          paper.position ?? "---";
+
+
+        setPositionClass(
+          positionElement,
+          paper.position
+        );
+
+
+        document.getElementById("demo-entry").textContent =
+          yen(paper.entry_price);
+
+
+        document.getElementById("demo-current").textContent =
+          yen(paper.current_price);
+
+
+        const pnlElement =
+          document.getElementById("demo-pnl");
+
+
+        pnlElement.textContent =
+          signedYen(paper.unrealized_pnl);
+
+
+        setProfitClass(
+          pnlElement,
+          paper.unrealized_pnl
+        );
+
+
+        const pnlPctElement =
+          document.getElementById("demo-pnl-pct");
+
+
+        pnlPctElement.textContent =
+          percent(paper.unrealized_return_pct);
+
+
+        setProfitClass(
+          pnlPctElement,
+          paper.unrealized_return_pct
+        );
+
+
+        document.getElementById("demo-asset").textContent =
+          yen(paper.asset);
+
+
+        document.getElementById("demo-initial").textContent =
+          yen(paper.initial_asset);
+
+
+        const totalPnlElement =
+          document.getElementById("demo-total-pnl");
+
+
+        totalPnlElement.textContent =
+          signedYen(paper.total_pnl);
+
+
+        setProfitClass(
+          totalPnlElement,
+          paper.total_pnl
+        );
+
+
+        const totalReturnElement =
+          document.getElementById("demo-return");
+
+
+        totalReturnElement.textContent =
+          percent(paper.total_return_pct);
+
+
+        setProfitClass(
+          totalReturnElement,
+          paper.total_return_pct
+        );
+
+
+        document.getElementById("demo-trades").textContent =
+          paper.trades ?? "---";
+
+
+        document.getElementById("demo-winrate").textContent =
+          Number.isFinite(Number(paper.win_rate))
+            ? Number(paper.win_rate).toFixed(2) + "%"
+            : "---";
+
+
+        document.getElementById("demo-position-start").textContent =
+          paper.position_started_at ?? "---";
+
+
+        document.getElementById("demo-updated").textContent =
+          "最終更新: " + (data.updated_at ?? "---");
+
+
+        dot.classList.remove("offline");
+
+        connection.textContent =
+          "ORIGIN ONLINE";
+
+      }
+
+      catch(error){
+
+        dot.classList.add("offline");
+
+        connection.textContent =
+          "ORIGINとの通信待機中";
+
+
+        document.getElementById("demo-updated").textContent =
+          "最終更新: 通信待機中";
+
+      }
+
+    }
+
+
+    refreshOriginDemo();
+
+
+    setInterval(
+      refreshOriginDemo,
+      5000
+    );
+
+  </script>
+
 
   <!--
     Cloudflare Web Analytics:
@@ -285,6 +1117,16 @@
     発行された専用JSスニペットをこの位置（</body>直前）へ貼り付ける。
     現在は未公開のため、計測コードは意図的に有効化していません。
   -->
-<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "496c11eadfa9436c904fee3cf3a48d68"}'></script><!-- End Cloudflare Web Analytics -->
+
+
+  <!-- Cloudflare Web Analytics -->
+  <script
+    type="module"
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token":"496c11eadfa9436c904fee3cf3a48d68"}'>
+  </script>
+  <!-- End Cloudflare Web Analytics -->
+
+
 </body>
 </html>
