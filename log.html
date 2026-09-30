@@ -383,312 +383,164 @@
   <main>
     <div class="wrap">
 
-      <section class="hero">
-        <div class="eyebrow">Personal BTC Trading System / Development Log</div>
-
-        <h1>PROJECT<br>ORIGIN</h1>
-
-        <img
-          src="CA845100-BFF2-4024-BCC4-3A9D76934C77.png"
-          alt="ORIGIN mascot"
-          style="width:100%;max-width:420px;height:auto;display:block;margin:18px auto 24px;"
-        >
-
-        <p>
-          <strong>
-            プログラミング未経験から、ChatGPTにコードを書いてもらって1ヶ月で作りました。
-          </strong>
-        </p>
-
-        <p>
-          個人で開発しているBTC自動売買システム「ORIGIN」の開発記録。
-          相場分析、PaperTrade、戦略比較、Commander、LIVE取引まで、
-          少しずつ育っていく過程を残しています。
-        </p>
-
-        <div class="chips">
-          <span class="chip">BTC</span>
-          <span class="chip">Python</span>
-          <span class="chip">PaperTrade</span>
-          <span class="chip">Strategy Research</span>
-          <span class="chip">Commander</span>
-          <span class="chip">Live Trading</span>
-        </div>
-      </section>
-
-
-      <section id="about">
-
-        <div class="section-title">
-          <span>ABOUT</span>
-          <h2>ORIGINとは</h2>
-        </div>
-
-        <div class="grid">
-
-          <article class="card">
-            <h3>自分のトレードを、自分でシステムにする。</h3>
-
-            <p>
-              ORIGINは、BTC相場を分析しながら複数の戦略を比較し、
-              条件が整ったときに売買判断を行う個人開発の自動売買システムです。
-            </p>
-
-            <p class="note">
-              このサイトは販売ページではなく、設計・検証・失敗・改善を記録するための開発日記です。
-            </p>
-
-            <p class="note" style="margin-top:18px;">
-              現在は個人利用を目的として開発・検証しています。
-              長期運用で十分な安定性と結果が確認できた場合には、
-              いつか一般向けに公開することも考えています。
-            </p>
-          </article>
-
-
-          <article class="card" id="status">
-
-            <div class="label">CURRENT PHASE</div>
-            <div class="big good">LIVE TEST</div>
-
-            <div class="label">STATUS</div>
-            <p>実口座連携の安全確認と経過観察</p>
-
-            <div class="label">STYLE</div>
-            <p>長期観察・段階的改善</p>
-
-          </article>
-
-        </div>
-      </section>
-
-
-      <!-- =========================
-           REALTIME DEMO
-           ========================= -->
-
-      <section id="demo">
-
-        <div class="section-title">
-          <span>REALTIME PAPER TRADE</span>
-          <h2>ORIGIN DEMO TRADING</h2>
-        </div>
-
-        <article class="card demo-card">
-
-          <div class="demo-head">
-
-            <div class="demo-status">
-              <span class="demo-dot" id="demo-dot"></span>
-              <span id="demo-connection">ORIGINと接続中...</span>
-            </div>
-
-            <div class="demo-live-badge">
-              5 SEC AUTO UPDATE
-            </div>
-
-          </div>
-
-
-          <div class="demo-main">
-
-            <div class="demo-box">
-              <div class="label">BTC PRICE</div>
-              <div class="demo-value" id="demo-btc">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">COMMANDER</div>
-              <div class="demo-value" id="demo-commander">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">STRATEGY</div>
-              <div class="demo-value" id="demo-strategy">---</div>
-            </div>
-
-          </div>
-
-
-          <div class="demo-grid">
-
-            <div class="demo-box">
-              <div class="label">LONG</div>
-              <div class="demo-value long" id="demo-long">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">SHORT</div>
-              <div class="demo-value short" id="demo-short">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">ACTION</div>
-              <div class="demo-value" id="demo-action">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">PAPER POSITION</div>
-              <div class="demo-value" id="demo-position">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">ENTRY PRICE</div>
-              <div class="demo-value" id="demo-entry">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">CURRENT PRICE</div>
-              <div class="demo-value" id="demo-current">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">含み損益</div>
-              <div class="demo-value" id="demo-pnl">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">含み損益率</div>
-              <div class="demo-value" id="demo-pnl-pct">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">DEMO ASSET</div>
-              <div class="demo-value" id="demo-asset">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">INITIAL ASSET</div>
-              <div class="demo-value" id="demo-initial">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">累計損益</div>
-              <div class="demo-value" id="demo-total-pnl">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">TOTAL RETURN</div>
-              <div class="demo-value" id="demo-return">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">TRADES</div>
-              <div class="demo-value" id="demo-trades">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">WIN RATE</div>
-              <div class="demo-value" id="demo-winrate">---</div>
-            </div>
-
-            <div class="demo-box">
-              <div class="label">POSITION START</div>
-              <div class="demo-value" id="demo-position-start">---</div>
-            </div>
-
-          </div>
-
-
-          <div class="demo-footer">
-            <div id="demo-updated">最終更新: ---</div>
-            <div>
-              ※ PaperTradeのデモ結果です。LIVE実口座のポジション・残高・注文情報は公開していません。
-            </div>
-          </div>
-
-        </article>
-      </section>
-
-
-      <section id="analytics">
-
-        <div class="section-title">
-          <span>ACCESS ANALYTICS</span>
-          <h2>閲覧状況</h2>
-        </div>
-
-        <div class="grid">
-
-          <article class="card">
-
-            <div class="label">ANALYTICS</div>
-            <div class="big good">VISITORS</div>
-
-            <p>
-              <img
-                src="https://hits.sh/kazu34rz.github.io/origin-project.svg?style=for-the-badge&label=TOTAL%20VIEWS"
-                alt="累計アクセス数"
-              >
-            </p>
-
-          </article>
-
-        </div>
-      </section>
-
-
       <section id="log">
+
+        <p style="margin-bottom:24px;"><a href="index.html" style="display:inline-block;padding:10px 16px;border:1px solid #4f6475;border-radius:10px;text-decoration:none;color:inherit;">← HOMEへ戻る</a></p>
 
         <div class="section-title">
           <span>DEVELOPMENT LOG</span>
           <h2>開発日記</h2>
         </div>
 
-        <article class="card" style="text-align:center;">
-          <div class="label">LATEST UPDATE</div>
-          <div class="big good">2026.09.30</div>
-          <p>9月の結果など、ORIGINの開発記録をまとめています。</p>
-          <p style="margin-top:22px;">
-            <a href="log.html" style="display:inline-block;padding:12px 20px;border:1px solid #4f6475;border-radius:10px;text-decoration:none;color:inherit;">開発日記を見る →</a>
-          </p>
-        </article>
+
+        <div class="timeline">
+
+
+          <article class="entry">
+
+            <time>2026.09.30</time>
+
+            <h3>9月の結果です。</h3>
+
+            <p>
+              9月の結果です。プラス2万円くらいです。
+            </p>
+
+            <img
+              src="IMG_1595.PNG"
+              alt="ORIGIN 2026年9月の運用結果"
+              style="width:70%;max-width:420px;display:block;margin:12px auto;border-radius:16px;"
+            >
+
+            <img
+              src="IMG_1596.PNG"
+              alt="bitFlyer 2026年9月の損益"
+              style="width:70%;max-width:420px;display:block;margin:12px auto;border-radius:16px;"
+            >
+
+          </article>
+
+
+          <article class="entry">
+
+            <time>2026.09.05</time>
+
+            <h3>ORIGINに全振りしました。</h3>
+
+            <p>
+              とりあえず動作は問題なさそうなので、自分のポジションをORIGINに全振りしました。
+            </p>
+
+            <img
+              src="IMG_1382.png"
+              alt="ORIGIN"
+              style="width:30%;height:auto;"
+            >
+
+            <img
+              src="IMG_1383.png"
+              alt="ORIGIN"
+              style="width:30%;height:auto;"
+            >
+
+          </article>
+
+
+          <article class="entry">
+
+            <time>2026.08.31</time>
+
+            <h3>お試しで実戦投入しました。</h3>
+
+            <img
+              src="IMG_1235.png"
+              alt="ORIGIN LIVE"
+              style="width:100%;height:auto;border-radius:16px;margin-top:18px;"
+            >
+
+            <p>ORIGINの残りの画面です。</p>
+
+            <img
+              src="IMG_1290.png"
+              alt="ORIGINの画面"
+              style="width:70%;max-width:360px;display:block;margin:12px auto;"
+            >
+
+            <img
+              src="IMG_1291.png"
+              alt="ORIGINの画面"
+              style="width:70%;max-width:360px;display:block;margin:12px auto;"
+            >
+
+          </article>
+
+
+          <article class="entry">
+
+            <time>2026.08.30</time>
+
+            <h3>LIVE画面の表示を整理</h3>
+
+            <p>
+              実口座のポジション、約定価格、損益、照合状態などをスマホから確認しやすい形へ。
+              売買ロジックには触れず、表示だけを調整。
+            </p>
+
+          </article>
+
+
+          <article class="entry">
+
+            <time>2026.08.29</time>
+
+            <h3>Commanderから売買判断へ</h3>
+
+            <p>
+              LONG / SHORTを個別に評価し、現在採用中のstrategy/profileに応じて
+              エントリー適格判定を行う構造を調整。PaperTradeで挙動を観察。
+            </p>
+
+          </article>
+
+
+          <article class="entry">
+
+            <time>2026.08</time>
+
+            <h3>研究所とPaperTradeを接続</h3>
+
+            <p>
+              複数strategyを並行評価し、成績の良い方式をPaperTradeへ反映する仕組みを実装。
+              「考えるだけ」から「比較して選ぶ」システムへ。
+            </p>
+
+          </article>
+
+
+          <article class="entry">
+
+            <time>START</time>
+
+            <h3>ORIGIN開発開始</h3>
+
+            <p>
+              bitFlyerの価格取得とMACD分析からスタート。
+              小さなプログラムを少しずつ積み重ね、現在の形へ。
+            </p>
+
+          </article>
+
+        </div>
+
+
+        <div class="disclaimer">
+          ※ 本サイトは個人開発の記録です。投資助言、利益保証、売買推奨を目的としたものではありません。
+        </div>
 
       </section>
 
     </div>
   </main>
-
-
-  <section style="text-align:center;margin:40px 0;">
-
-    <h2>ORIGINをスマホで見る</h2>
-
-    <p>QRコードからこのページにアクセスできます。</p>
-
-    <img
-      src="D124BF06-18E1-400E-A80D-F1C4BCA6F568.png"
-      alt="PROJECT ORIGIN QRコード"
-      style="width:140px;max-width:60%;border-radius:12px;"
-    >
-
-  </section>
-
-
-  <section style="margin:40px auto;max-width:760px;padding:0 20px;">
-
-    <h2>ORIGINへのコメント</h2>
-
-    <p>開発についての感想など、お気軽にどうぞ。</p>
-
-    <script
-      src="https://giscus.app/client.js"
-      data-repo="kazu34rz/origin-project"
-      data-repo-id="R_kgDOUIpcVg"
-      data-category="Announcements"
-      data-category-id="DIC_kwDOUIpcVs4DEpbd"
-      data-mapping="pathname"
-      data-strict="0"
-      data-reactions-enabled="1"
-      data-emit-metadata="0"
-      data-input-position="bottom"
-      data-theme="dark_dimmed"
-      data-lang="ja"
-      crossorigin="anonymous"
-      async>
-    </script>
-
-  </section>
 
 
   <footer>
