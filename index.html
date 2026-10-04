@@ -508,7 +508,7 @@
 
         <article class="card demo-card">
 
-          <img id="demo-mascot" class="demo-mascot" src="IMG_1423.PNG" alt="ORIGIN demo mascot">
+          <img id="demo-mascot" class="demo-mascot" src="WAIT_FULL.PNG" alt="ORIGIN demo WAIT mascot">
 
           <div class="demo-head">
 
@@ -915,17 +915,24 @@
         const demoPosition =
           String(paper.position ?? "").toUpperCase();
 
+        const demoDecision =
+          String(data.commander ?? "").toUpperCase();
+
         if(demoMascot){
-          if(demoPosition === "LONG"){
-            demoMascot.src = "IMG_1424.PNG";
-            demoMascot.alt = "ORIGIN demo LONG mascot";
+          if(demoDecision === "ENTER_LONG"){
+            demoMascot.src = "ENTER_LONG_FULL.PNG";
+            demoMascot.alt = "ORIGIN demo ENTER LONG mascot";
           }
-          else if(demoPosition === "SHORT"){
-            demoMascot.src = "IMG_1425.PNG";
-            demoMascot.alt = "ORIGIN demo SHORT mascot";
+          else if(demoDecision === "ENTER_SHORT"){
+            demoMascot.src = "ENTER_SHORT_FULL.PNG";
+            demoMascot.alt = "ORIGIN demo ENTER SHORT mascot";
+          }
+          else if(demoDecision === "HOLD" || demoPosition === "LONG" || demoPosition === "SHORT"){
+            demoMascot.src = "HOLD_FULL.PNG";
+            demoMascot.alt = "ORIGIN demo HOLD mascot";
           }
           else{
-            demoMascot.src = "IMG_1423.PNG";
+            demoMascot.src = "WAIT_FULL.PNG";
             demoMascot.alt = "ORIGIN demo WAIT mascot";
           }
         }
