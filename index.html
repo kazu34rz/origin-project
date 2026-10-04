@@ -219,6 +219,30 @@
 
     .demo-card{
       overflow:hidden;
+      position:relative;
+    }
+
+    .demo-mascot{
+      position:absolute;
+      right:24px;
+      top:76px;
+      width:150px;
+      max-width:28%;
+      height:auto;
+      object-fit:contain;
+      pointer-events:none;
+      z-index:1;
+    }
+
+    .demo-main,
+    .demo-grid,
+    .demo-footer{
+      position:relative;
+      z-index:2;
+    }
+
+    .demo-main{
+      padding-right:150px;
     }
 
     .demo-head{
@@ -346,6 +370,14 @@
 
       .demo-main{
         grid-template-columns:1fr 1fr;
+        padding-right:105px;
+      }
+
+      .demo-mascot{
+        right:14px;
+        top:82px;
+        width:105px;
+        max-width:31%;
       }
 
       .demo-main .demo-box:first-child{
@@ -475,6 +507,8 @@
         </div>
 
         <article class="card demo-card">
+
+          <img id="demo-mascot" class="demo-mascot" src="WAIT_FULL.PNG" alt="ORIGIN demo mascot">
 
           <div class="demo-head">
 
@@ -874,6 +908,27 @@
           positionElement,
           paper.position
         );
+
+        const demoMascot =
+          document.getElementById("demo-mascot");
+
+        const demoPosition =
+          String(paper.position ?? "").toUpperCase();
+
+        if(demoMascot){
+          if(demoPosition === "LONG"){
+            demoMascot.src = "LONG_FULL.PNG";
+            demoMascot.alt = "ORIGIN demo LONG mascot";
+          }
+          else if(demoPosition === "SHORT"){
+            demoMascot.src = "SHORT_FULL.PNG";
+            demoMascot.alt = "ORIGIN demo SHORT mascot";
+          }
+          else{
+            demoMascot.src = "WAIT_FULL.PNG";
+            demoMascot.alt = "ORIGIN demo WAIT mascot";
+          }
+        }
 
 
         document.getElementById("demo-entry").textContent =
