@@ -646,15 +646,33 @@
 
           <article class="card">
 
-            <div class="label">ANALYTICS</div>
-            <div class="big good">VISITORS</div>
+            <div class="label">CLOUDFLARE WEB ANALYTICS</div>
+            <div class="big good">TOTAL PAGE VIEWS</div>
 
-            <p>
-              <img
-                src="https://hits.sh/kazu34rz.github.io/origin-project.svg?style=for-the-badge&label=TOTAL%20VIEWS"
-                alt="累計アクセス数"
-              >
+            <p style="margin:8px 0 2px;">
+              <span class="big good" id="origin-pageviews" aria-live="polite">---</span>
+              <span class="note"> 回</span>
             </p>
+            <p class="note" id="origin-pageviews-note">2026年8月からの閲覧回数を集計しています。</p>
+            <script>
+              (async function () {
+                const counter = document.getElementById("origin-pageviews");
+                const note = document.getElementById("origin-pageviews-note");
+                try {
+                  const response = await fetch("analytics.json?ts=" + Date.now(), {cache: "no-store"});
+                  if (!response.ok) throw new Error("HTTP " + response.status);
+                  const data = await response.json();
+                  if (!Number.isSafeInteger(data.pageviews) || data.pageviews < 0) {
+                    throw new Error("Invalid pageview count");
+                  }
+                  counter.textContent = new Intl.NumberFormat("ja-JP").format(data.pageviews);
+                  note.textContent = "2026年8月からの累計閲覧数（Cloudflare計測）";
+                } catch (error) {
+                  counter.textContent = "---";
+                  note.textContent = "閲覧数を一時的に取得できません";
+                }
+              })();
+            </script>
 
           </article>
 
